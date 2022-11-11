@@ -1,0 +1,51 @@
+<form [formGroup]="newform">
+  <label>Name</label>
+  <input type="text" formControlName="name" /><br /><br />
+  <span style="color:red;" *ngIf="name && name.invalid && name.touched"
+    >Name is required</span
+  ><br />
+  <label>Age</label>
+  <input type="number" formControlName="age" /><br /><br />
+  <span style="color:red;" *ngIf="age && age.invalid && age.touched"
+    >Age is required</span
+  ><br />
+  <label>Department</label>
+  <input type="text" formControlName="dprt" /><br /><br />
+  <br />
+  <label>Email</label>
+  <input type="email" formControlName="mail" /><br /><br />
+  <span style="color:red;" *ngIf="mail && mail.invalid && mail.touched"
+    >Mail is required</span
+  >
+  <br />
+  <label>PassWord</label>
+  <input type="password" formControlName="pswrd" /><br /><br />
+  <span style="color:red;" *ngIf="pswrd && pswrd.invalid && pswrd.touched"
+    >Password is required</span
+  >
+  <span style="color:red;" *ngIf="pswrd.errors?.minlength">Min 4chracter</span>
+</form>
+<button (click)="add()">add</button>
+<button (click)="update()">update</button>
+<table>
+  <tr>
+    <th>no</th>
+    <th>name</th>
+    <th>age</th>
+    <th>Dprt</th>
+    <th>Email</th>
+    <th>PassWord</th>
+    <th>edit</th>
+    <th>delete</th>
+  </tr>
+  <tr *ngFor="let data of arr; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ data.name }}</td>
+    <td>{{ data.age }}</td>
+    <td>{{ data.dprt }}</td>
+    <td>{{ data.mail }}</td>
+    <td>{{ data.pswrd }}</td>
+    <td><button (click)="edit(i)">edit</button></td>
+    <td><button (click)="delete(i)">delete</button></td>
+  </tr>
+</table>
